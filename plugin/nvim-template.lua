@@ -1,5 +1,10 @@
 vim.api.nvim_create_user_command(
     "Template",
-    function () require("nvim-template").print_hello() end,
-    { desc = "Print hello world" }
+    function(opts)
+        require("nvim-template").insert(opts.args)
+    end,
+    {
+        nargs = 1,
+        desc = "Insert a template at the current cursor position"
+    }
 )
